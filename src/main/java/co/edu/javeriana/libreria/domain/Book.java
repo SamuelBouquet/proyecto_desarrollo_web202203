@@ -11,9 +11,7 @@ public class Book {
     private String description;
     private String imageUrl;
 
-    @OneToOne
-    @JoinColumn(foreignKey = @ForeignKey(name= "book_id"))
-    private Editorial editorial;
+//
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -48,11 +46,11 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public Editorial getEditorial() {
-        return editorial;
-    }
+  //  public Editorial getEditorial() {
+   //     return editorial;
+    //}
 
-    public void setEditorial(Editorial editorial) {
-        this.editorial = editorial;
-    }
+    //public void setEditorial(Editorial editorial) {
+      //  this.editorial = editorial;
+    //}
 }

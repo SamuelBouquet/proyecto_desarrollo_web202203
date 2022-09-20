@@ -35,7 +35,10 @@ public class BookController {
     }
 
     @PostMapping("")
-    public void post(@RequestBody Book user) {bookService.saveBook(user);}
+    public void post(@RequestBody Book user) {
+        System.out.println(user.getName());
+        bookService.saveBook(user);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> put(@PathVariable Integer id,@RequestBody Book book) {
