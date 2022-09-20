@@ -6,14 +6,14 @@ import javax.persistence.*;
 @Entity
 
 public class Book {
-
-
     private Integer id;
     private String name;
     private String description;
     private String imageUrl;
 
-    private Integer id_editorial;
+    @OneToOne
+    @JoinColumn(foreignKey = @ForeignKey(name= "book_id"))
+    private Editorial editorial;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -48,11 +48,11 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public Integer getId_editorial() {
-        return id_editorial;
+    public Editorial getEditorial() {
+        return editorial;
     }
 
-    public void setId_editorial(Integer id_editorial) {
-        this.id_editorial = id_editorial;
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
 }
