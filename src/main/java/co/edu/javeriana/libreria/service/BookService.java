@@ -20,6 +20,8 @@ public class BookService {
 
     public Book getBook(Integer id){return repository.findById(id).get();}
 
+    public Book getBookByName(String name){return repository.findBookByName(name);}
+
     public void saveBook(Book book) {repository.save(book);}
 
     public void deleteBook(Integer id) {

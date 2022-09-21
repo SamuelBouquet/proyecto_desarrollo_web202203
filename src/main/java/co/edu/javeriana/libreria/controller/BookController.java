@@ -50,6 +50,7 @@ public class BookController {
            newBook.setDescription(book.getDescription());
            newBook.setName(book.getName());
            newBook.setImageUrl(book.getImageUrl());
+           newBook.setEditorial(book.getEditorial());
            bookService.saveBook(newBook);
            return new ResponseEntity<>(HttpStatus.OK);
        }catch (Exception e){

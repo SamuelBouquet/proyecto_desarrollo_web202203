@@ -52,7 +52,7 @@ public class ClientService {
         Client client = repository.findByEmail(email);
         try {
             if(client.getPassword().equals(codify(password))) {
-                repository.delete(client);
+                client.setActivado(false);
                 return true;
             }
         }catch (Exception e){
@@ -76,6 +76,6 @@ public class ClientService {
     }
 
     public List<Client> getAllClients() {
-        return repository.findAll();
+        return repository.findAllActive();
     }
 }

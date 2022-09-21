@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ShoppingRepository extends JpaRepository<Shopping,Integer> {
-    @Query("select '*' from Client u join Shopping s on u.id=s.user_id join Book b on b.id=s.book_id where u.email=?1")
+    @Query(value = "select s.id,s.id_book,s.id_client from shopping s join client c on s.id_client = c.id join book b on b.id=s.id_book where c.email=?1",nativeQuery = true)
     List<Shopping> findAllByUser(String email);
+
+    @Query(value= "select * from shopping s", nativeQuery = true)
+    List<Shopping> findShops();
 }

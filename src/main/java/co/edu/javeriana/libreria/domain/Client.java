@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 public class Client {
 
-    @Column(name = "id")
     private Integer id;
     @Column(name = "email")
     private String email;
@@ -15,6 +14,16 @@ public class Client {
     private String password;
     @Column(name = "name")
     private String name;
+    @Column(name = "activado")
+    private Boolean activado;
+
+    public Boolean getActivado() {
+        return activado;
+    }
+
+    public void setActivado(Boolean activado) {
+        this.activado = activado;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

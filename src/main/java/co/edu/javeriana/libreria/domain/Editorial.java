@@ -7,13 +7,13 @@ import javax.persistence.*;
 @Entity
 public class Editorial {
 
-    //@Column(name = "id")
-    private Integer id;
-    //@Column(name = "name")
-    private String name;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "name")
+    private String name;
+
+
     public Integer getId() {
         return id;
     }

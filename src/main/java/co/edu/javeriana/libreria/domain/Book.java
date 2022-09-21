@@ -6,14 +6,15 @@ import javax.persistence.*;
 @Entity
 
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
     private String description;
     private String imageUrl;
-
-  /*  @OneToOne
-    @JoinColumn(name = "editorial_id")
+    @Access(AccessType.FIELD)
+    @ManyToOne(targetEntity = Editorial.class , fetch = FetchType.EAGER)
     private Editorial editorial;
 
 
@@ -25,9 +26,8 @@ public class Book {
 
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
-    }*/
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    }
+
     public Integer getId() {
         return id;
     }
