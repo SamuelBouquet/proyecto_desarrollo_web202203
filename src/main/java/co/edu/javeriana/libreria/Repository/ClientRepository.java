@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ClientRepository extends JpaRepository<Client,Integer> {
 
-    @Query(value = "select 'u' from Client u where u.email = ?1", nativeQuery = true)
+    @Query(value = "select * from  client u where u.email = ?1", nativeQuery = true)
     Client findByEmail(String email);
 
 }

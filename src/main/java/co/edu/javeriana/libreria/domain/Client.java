@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Client {
 
+    @Column(name = "id")
     private Integer id;
     @Column(name = "email")
     private String email;

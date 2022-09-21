@@ -13,6 +13,7 @@ import java.util.List;
 @Transactional
 public class BookService {
 
+
     @Autowired
     BookRepository repository;
     public List<Book> findAllBooks(){return repository.findAll();}
@@ -24,4 +25,8 @@ public class BookService {
     public void deleteBook(Integer id) {
         repository.delete(repository.findById(id).get());
     }
+
+    //public List<Book> getByEditorial(String name){
+    //    return repository.getByEditorial(name);
+    //};
 }

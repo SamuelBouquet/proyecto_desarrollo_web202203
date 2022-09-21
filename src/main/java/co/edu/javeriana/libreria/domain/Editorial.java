@@ -6,16 +6,14 @@ import javax.persistence.*;
 
 @Entity
 public class Editorial {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+
+    //@Column(name = "id")
     private Integer id;
+    //@Column(name = "name")
     private String name;
 
-    public Editorial() {
-
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -32,8 +30,4 @@ public class Editorial {
         this.name = name;
     }
 
-    public Editorial(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

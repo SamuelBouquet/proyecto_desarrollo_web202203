@@ -1,7 +1,6 @@
 package co.edu.javeriana.libreria.service;
 
 import co.edu.javeriana.libreria.Repository.ClientRepository;
-import co.edu.javeriana.libreria.domain.Book;
 import co.edu.javeriana.libreria.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,17 +34,32 @@ public class ClientService {
         }
     }
 
-    public void saveUser(Client u) {
+    public boolean saveUser(Client u) {
         try{
-            u.setPassword(codify(u.getPassword()));
-            repository.save(u);
+            if(repository.findByEmail(u.getEmail())==null) {
+                u.setPassword(codify(u.getPassword()));
+                repository.save(u);
+                return true;
+            }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-
+        return false;
     }
 
-    public void deleteUser(String email){repository.delete(repository.findByEmail(email));}
+    public boolean deleteUser(String email, String password){
+        //repository.delete(repository.findByEmail(email))
+        Client client = repository.findByEmail(email);
+        try {
+            if(client.getPassword().equals(codify(password))) {
+                repository.delete(client);
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
 
     public String codify(String text) throws Exception{

@@ -12,12 +12,26 @@ public class Book {
     private String description;
     private String imageUrl;
 
-//
+  /*  @OneToOne
+    @JoinColumn(name = "editorial_id")
+    private Editorial editorial;
+
+
+    //
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
+    }*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -46,12 +60,4 @@ public class Book {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-  //  public Editorial getEditorial() {
-   //     return editorial;
-    //}
-
-    //public void setEditorial(Editorial editorial) {
-      //  this.editorial = editorial;
-    //}
 }

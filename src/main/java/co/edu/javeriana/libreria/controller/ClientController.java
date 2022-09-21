@@ -35,22 +35,29 @@ public class ClientController {
     public List<Client> getAllClients(){return service.getAllClients();}
 
     @PostMapping("")
-    public void add(@RequestBody Client aux){service.saveUser(aux);}
+    public ResponseEntity<?> add(@RequestBody Client aux){
+        if(service.saveUser(aux))
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        else{
+            return new ResponseEntity<>("El email ya se encuentra\nregistrado",HttpStatus.NOT_ACCEPTABLE);
+        }
+
+    }
 
     @DeleteMapping("/{email}")
-    public void delete(@PathVariable String email){service.deleteUser(email);}
+    public ResponseEntity<?> delete(@PathVariable String email, @RequestBody String password){
+        if(service.deleteUser(email,password))
+            return new ResponseEntity<>("Se ha borrado el usuario\ncon exito",HttpStatus.ACCEPTED);
+        else
+            return new ResponseEntity<>("La contraseña ingresada\nes incorrecta",HttpStatus.UNAUTHORIZED);
+    }
 
     @PutMapping("/{email}")
-    public ResponseEntity<?> put(@PathVariable String email, @RequestBody Client aux) {
-        try {
+    public void put(@PathVariable String email, @RequestBody Client aux) {
             Client newClient = service.getUserByEmail(email);
             newClient.setName(aux.getName());
             newClient.setPassword(aux.getPassword());
             newClient.setEmail(aux.getEmail());
-            return new ResponseEntity<>(newClient, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
+            service.saveUser(newClient);
     }
 }

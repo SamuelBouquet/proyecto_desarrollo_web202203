@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book,Integer> {
 
-    @Query("select '*'   from Book b")
+    @Query(value = "select * from book b", nativeQuery = true)
     List<Book> findAllBooksByName();
 
+    //@Query(value = "select * from book b join editorial e on b.editorial_id=e.id where e.name = ?1",nativeQuery = true)
+    //List<Book> getByEditorial(String name);
 }

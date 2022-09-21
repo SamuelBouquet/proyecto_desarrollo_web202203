@@ -34,9 +34,11 @@ public class BookController {
         }
     }
 
+    //@GetMapping("/{editorial}")
+    //public List<Book> getAllByEditorial(@PathVariable String name){return bookService.getByEditorial(name);}
+
     @PostMapping("")
     public void post(@RequestBody Book user) {
-        System.out.println(user.getName());
         bookService.saveBook(user);
     }
 
