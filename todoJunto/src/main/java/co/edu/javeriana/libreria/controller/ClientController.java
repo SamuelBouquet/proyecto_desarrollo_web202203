@@ -14,7 +14,6 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping(path = "/Client")
 public class ClientController {
-
     @Autowired
     ClientService service;
 
