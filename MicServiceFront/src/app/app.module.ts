@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { EditorialComponent } from './editorial/editorial.component';
+import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    BusquedaComponent
+    BusquedaComponent,
+    EditorialComponent,
+    CrearLibroComponent
   ],
   imports: [
     BrowserModule,

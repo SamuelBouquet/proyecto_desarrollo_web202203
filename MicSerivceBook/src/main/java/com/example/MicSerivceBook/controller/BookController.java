@@ -42,6 +42,7 @@ public class BookController {
     //public List<Book> getAllByEditorial(@PathVariable String name){return bookService.getByEditorial(name);}
 
     @PostMapping("")
+    @CrossOrigin(origins="https://localhost:4200")
     public void post(@RequestBody Book book) {
         bookService.saveBook(book);
         //System.out.println(book.getName());
@@ -90,6 +91,7 @@ public class BookController {
         }
     }
 
+    @CrossOrigin(origins="https://localhost:4200")
     @GetMapping("/Editorial")
     public List<Editorial> getAllEditorial(){return bookService.getAllEditorial();}
 

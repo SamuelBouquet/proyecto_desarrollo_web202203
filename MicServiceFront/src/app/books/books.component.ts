@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Editorial } from '../editorial/editorial.component';
 import { BooksService } from './books.service';
 
 @Component({
@@ -26,9 +27,4 @@ export interface Book{
   description: string;
   image_url: string;
   editorial: Editorial;
-}
-
-export interface Editorial{
-  id: string;
-  name: string;
 }

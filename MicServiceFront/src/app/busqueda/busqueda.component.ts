@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BusquedaService } from './busqueda.service';
-import { Book, Editorial } from '../books/books.component';
+import { Book } from '../books/books.component';
+import { Editorial } from '../editorial/editorial.component';
 
 @Component({
   selector: 'app-busqueda',
