@@ -25,5 +25,10 @@ export interface Book{
   name: string;
   description: string;
   image_url: string;
-  editorial_id: string;
+  editorial: Editorial;
+}
+
+export interface Editorial{
+  id: string;
+  name: string;
 }

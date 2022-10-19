@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BusquedaService } from './busqueda.service';
-import { Book } from '../books/books.component';
+import { Book, Editorial } from '../books/books.component';
 
 @Component({
   selector: 'app-busqueda',
@@ -15,6 +15,7 @@ export class BusquedaComponent implements OnInit {
   });
 
   public result=<Book>{};
+  public resEdi=<Editorial>{};
 
   constructor(private formBuilder: FormBuilder,
               private busquedaService: BusquedaService) {}
@@ -26,6 +27,7 @@ export class BusquedaComponent implements OnInit {
     console.log('busqueda:',this.searchForm.value.busqueda)
     let busc: string;
     let result: Book;
+    let resEdi: Editorial;
     busc = ''+this.searchForm.value.busqueda;
     this.busquedaService.buscarLibro(busc).subscribe(
       data=>{console.log(data);

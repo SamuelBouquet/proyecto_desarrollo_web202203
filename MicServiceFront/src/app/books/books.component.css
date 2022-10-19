@@ -1,3 +1,7 @@
-card{
-    padding: 50px;
+.card{
+    padding: 10px;
+    min-height: 300px;
+    max-height: 300px;
+    margin: 15px;
+    border-color: black;
 }

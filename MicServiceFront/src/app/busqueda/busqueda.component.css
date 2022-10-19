@@ -1,0 +1,21 @@
+.custom-form{
+    padding:20px;
+}
+
+.card{
+    margin:30px;
+    padding: 15px;
+    border-color: black;
+}
+
+.bookName{
+    font-size: xx-large;
+}
+
+.bookDescription{
+    font-size: medium;
+}
+
+.bookEditorial{
+    font-size: small;
+}

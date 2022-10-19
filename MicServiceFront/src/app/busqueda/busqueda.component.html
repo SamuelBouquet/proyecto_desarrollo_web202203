@@ -6,14 +6,17 @@
         placeholder="Buscar"
         formControlName="busqueda"
         name="busqueda" />
+        <br>
         <button type="submit" class="btn btn-primary">buscar</button>
     </form>
     <div class="col-20">
-        <div class="card">
+        <div class="card" *ngIf="result.name!=null">
             <img class="card-img-top" src={{result.image_url}} alt="Foto">
             <div class="card-body">
                 <h5 class="bookName">{{result.name}}</h5>
                 <p class="bookDescription">{{result.description}}</p>
+                <br>
+                <p class="bookEditorial">{{result.editorial.name}}</p>
             </div>
         </div>
     </div>
