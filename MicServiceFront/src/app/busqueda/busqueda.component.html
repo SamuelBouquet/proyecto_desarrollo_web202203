@@ -1,0 +1,20 @@
+<div class="busqueda">
+    <form class="custom-form" [formGroup]="searchForm" (ngSubmit)="buscar()">
+        <input
+        type="text"
+        class="form-control rounded" 
+        placeholder="Buscar"
+        formControlName="busqueda"
+        name="busqueda" />
+        <button type="submit" class="btn btn-primary">buscar</button>
+    </form>
+    <div class="col-20">
+        <div class="card">
+            <img class="card-img-top" src={{result.image_url}} alt="Foto">
+            <div class="card-body">
+                <h5 class="bookName">{{result.name}}</h5>
+                <p class="bookDescription">{{result.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

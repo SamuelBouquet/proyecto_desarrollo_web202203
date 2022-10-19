@@ -1,1 +1,16 @@
-<h1>Lista de Libros!</h1>
+<div class="books">
+    <br>
+    <div class="row align-items-center">
+        <div class="col-4"  *ngFor="let book of books">
+            <div class="card">
+                <img class="card-img-top" src={{book.image_url}} alt="Foto">
+                <div class="card-body">
+                    <h5 class="bookName">{{book.name}}</h5>
+                    <p class="bookDescription">{{book.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
