@@ -1,0 +1,31 @@
+<div class="crear">
+    <div class="card">
+        <form class="custom-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <h1>Crear Libro</h1>
+            <br>
+            <label for="name">Nombre</label>
+            <br>
+            <input type="text" formControlName="name" name="name" placeholder="name" required="required" />
+            <br>
+            <br>
+            <label for="descripcion">Descripción</label>
+            <br>
+            <input type="text" formControlName="descripcion" name="descripcion" placeholder="descripcion" required="required" />
+            <br>
+            <br>
+            <label for="image_url">URL de la portada</label>
+            <br>
+            <input type="text" formControlName="image_url" name="image_url" placeholder="image_url" required="required" />
+            <br>
+            <br>
+            <label for="editorial">Editorial</label>
+            <br>
+            <select class="spinner" formControlName="editorial">
+                <option class="editorial-select" *ngFor="let editorial of editoriales">{{editorial.name}}</option> 
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </form>
+    </div>
+</div>

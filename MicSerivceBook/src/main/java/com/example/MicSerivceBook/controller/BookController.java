@@ -6,6 +6,7 @@ import com.example.MicSerivceBook.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-
+    @CrossOrigin(origins="https://localhost:4200")
     @GetMapping("")
     public List<Book> list() {
         return bookService.findAllBooks();
@@ -41,6 +42,7 @@ public class BookController {
     //public List<Book> getAllByEditorial(@PathVariable String name){return bookService.getByEditorial(name);}
 
     @PostMapping("")
+    @CrossOrigin(origins="https://localhost:4200")
     public void post(@RequestBody Book book) {
         bookService.saveBook(book);
         //System.out.println(book.getName());
@@ -63,6 +65,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins="https://localhost:4200")
     public void delete(@PathVariable Integer id) {
         bookService.deleteBook(id);
     }
@@ -89,9 +92,11 @@ public class BookController {
         }
     }
 
+    @CrossOrigin(origins="https://localhost:4200")
     @GetMapping("/Editorial")
     public List<Editorial> getAllEditorial(){return bookService.getAllEditorial();}
 
+    @CrossOrigin(origins="https://localhost:4200")
     @GetMapping("/{name}/name")
     public Book getBookByName(@PathVariable String name){return bookService.getBookByName(name);}
 

@@ -1,0 +1,16 @@
+<div class="eliminar">
+    <div class="card">
+        <form class="custom-form" [formGroup]="eliminarForm" (ngSubmit)="onSubmit()">
+            <h1>Eliminar Libro</h1>
+            <br>
+            <label for="book">Seleccione el libro</label>
+            <br>
+            <select class="spinner" formControlName="book">
+                <option class="book-select" *ngFor="let book of books">{{book.name}}</option> 
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Eliminar</button>
+        </form>
+    </div>
+</div>
