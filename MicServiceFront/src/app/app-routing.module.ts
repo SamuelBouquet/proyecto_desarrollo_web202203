@@ -6,13 +6,15 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 import { EliminarLibroComponent } from './eliminar-libro/eliminar-libro.component';
 import { LoginComponent } from './login/login.component'
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
                         { path: '', component: BooksComponent },
                         { path: 'login', component: LoginComponent },
                         { path: 'busqueda', component: BusquedaComponent},
                         { path: 'crearLibro', component: CrearLibroComponent},
-                        { path: 'eliminarLibro', component: EliminarLibroComponent}];
+                        { path: 'eliminarLibro', component: EliminarLibroComponent},
+                        { path: 'register', component: RegisterComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

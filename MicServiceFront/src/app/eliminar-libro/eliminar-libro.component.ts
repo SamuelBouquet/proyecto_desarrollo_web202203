@@ -35,9 +35,9 @@ export class EliminarLibroComponent implements OnInit {
     book={"id":bk!.id, "name":bk!.name, "description":bk!.description, "image_url":bk!.image_url, "editorial":bk!.editorial};
     console.log("sdftsdfasdf"+book.id)
     if(confirm("¿Desea eliminar "+bk!.name+"?")) {
-      this.eliminarLibroService.eliminarLibro(book)
+      this.eliminarLibroService.eliminarLibro(book).subscribe(data=>{console.log(data)})
       console.log(bk!.name+" fue eliminado");
-      window.location.reload()
+      //window.location.reload()
     }
   }
 

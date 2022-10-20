@@ -11,7 +11,7 @@ export class EliminarLibroService {
 
   eliminarLibro(book: Book){
     console.log(book)
-    const headers = new HttpHeaders()
+    //const headers = new HttpHeaders()
     return this.http.delete("http:localhost:8081/Libro/"+book.id)
   }
 
