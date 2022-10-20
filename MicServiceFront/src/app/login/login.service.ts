@@ -15,7 +15,7 @@ export class LoginService {
       const headers = new HttpHeaders()
       const body = JSON.stringify({})
       const params = new HttpParams()
-        .set('user', user)
+        .set('mail', user)
         .set('password', password)
       return this.http.post("http://localhost:8082/user", body, {
                             params: params
