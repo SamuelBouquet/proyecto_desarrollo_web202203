@@ -1,4 +1,10 @@
 <div class="books">
+    <form class="custom-form" [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+        <select class="spinner" formControlName="editorial">
+            <option class="editorial-select" *ngFor="let editorial of editoriales">{{editorial.name}}</option> 
+        </select>
+        <button type="submit" class="btn">Filtrar</button>
+    </form>
     <div class="row align-items-center">
         <div class="col-4"  *ngFor="let book of books">
             <div class="card">
