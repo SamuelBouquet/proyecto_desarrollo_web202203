@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { EditorialComponent } from './editorial/editorial.component';
 import { CrearLibroComponent } from './crear-libro/crear-libro.component';
+import { EliminarLibroComponent } from './eliminar-libro/eliminar-libro.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CrearLibroComponent } from './crear-libro/crear-libro.component';
     FooterComponent,
     BusquedaComponent,
     EditorialComponent,
-    CrearLibroComponent
+    CrearLibroComponent,
+    EliminarLibroComponent
   ],
   imports: [
     BrowserModule,
