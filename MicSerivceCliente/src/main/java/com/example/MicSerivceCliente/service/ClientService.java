@@ -48,7 +48,6 @@ public class ClientService {
     }
 
     public boolean deleteUser(String email, String password){
-        //repository.delete(repository.findByEmail(email))
         Client client = repository.findByEmail(email);
         try {
             if(client.getPassword().equals(codify(password))) {

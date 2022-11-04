@@ -52,5 +52,6 @@ insert into book
 (4,     'Cien Años de Soledad', 'El único premio novel de literatura de Colombia.',                                                                                                                                                                                     'https://images-na.ssl-images-amazon.com/images/I/51g1mv8VEnL._SX322_BO1,204,203,200_.jpg',4);
 
 
+
 select book.name,editorial.name from editorial join book on editorial.id = book.editorial_id
 

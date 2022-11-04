@@ -17,7 +17,7 @@ export class LoginService {
       const params = new HttpParams()
         .set('mail', user)
         .set('password', password)
-      return this.http.post("http://localhost:8082/user", body, {
+      return this.http.post("http://localhost:8080/login", body, {
                             params: params
                             });
   }

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       console.log('Password:', this.checkoutForm.value.password);
       this.loginService.login(userParam, passParam).subscribe(
                           data => {
-                                    console.log(data);
+                                    console.log(data.token);
                                     this.loginService.setToken(data.token);
                                     this.router.navigateByUrl('/');
                                   });

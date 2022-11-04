@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/Client")
-public class ClientController {
+public class       ClientController {
     @Autowired
     ClientService service;
 
@@ -22,37 +22,11 @@ public class ClientController {
         try {
             Client aux = service.getUserByEmail(email);
             return new ResponseEntity<Client>(aux, HttpStatus.OK);
-            //return aux;
         }catch(Exception e){
             return new ResponseEntity<Client>(HttpStatus.NOT_FOUND);
-            //return null;
         }
     }
 
-
-    @GetMapping("")
-    public List<Client> getAllClients(){return service.getAllClients();}
-
-    /*@PostMapping("")
-    public ResponseEntity<?> add(@RequestBody Client aux){
-        if(service.saveUser(aux))
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        else{
-            return new ResponseEntity<>("El email ya se encuentra\nregistrado",HttpStatus.NOT_ACCEPTABLE);
-        }
-
-    }*/
-
-    @PostMapping("")
-    public Client login(@RequestBody Client client){
-        String token = getJWTToken(client.getEmail());
-        List<GrantedAuthority>
-
-    }
-
-    private String getJWTToken(String email) {
-
-    }
 
     @DeleteMapping("/{email}")
     public ResponseEntity<?> delete(@PathVariable String email, @RequestBody String password){

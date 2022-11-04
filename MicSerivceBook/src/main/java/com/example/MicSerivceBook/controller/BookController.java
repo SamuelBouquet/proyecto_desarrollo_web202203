@@ -38,9 +38,6 @@ public class BookController {
         }
     }
 
-    //@GetMapping("/{editorial}")
-    //public List<Book> getAllByEditorial(@PathVariable String name){return bookService.getByEditorial(name);}
-
     @PostMapping("")
     @CrossOrigin(origins="https://localhost:4200")
     public void post(@RequestBody Book book) {
@@ -103,13 +100,5 @@ public class BookController {
     @GetMapping("/{name}/Editorial/")
     public Editorial getEditorialByName(@PathVariable String name){return bookService.getEditorialByName(name);}
 
-    public String findAllBooks(Model model){
-        List<Book> myBooks = this.bookService.findAllBooks  ();
-        for (int i = 0; i < myBooks.size(); i++) {
-            System.out.println(myBooks.get(i).getName());
-        }
-        model.addAttribute("books", myBooks);
-        return "welcome";
-    }
 }
 

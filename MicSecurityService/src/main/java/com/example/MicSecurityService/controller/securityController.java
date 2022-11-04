@@ -1,6 +1,7 @@
 package com.example.MicSecurityService.controller;
 
 import com.example.MicSecurityService.domain.Client;
+import com.example.MicSecurityService.domain.Token;
 import com.example.MicSecurityService.service.clientService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,22 +20,15 @@ public class securityController {
     @Autowired
     public clientService service;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello world";
-    }
 
     @PostMapping("/login")
-    public String login (@RequestParam("mail") String email, @RequestParam("password")String pwd){
+    public Token login (@RequestParam("mail") String email, @RequestParam("password")String pwd){
         Client client = service.findByEmail(email, pwd);
-        System.out.println("cliente: " + client.getEmail() +" " + client.getPassword());
         if(client != null){
-            System.out.println("encontro algo");
-            String token = getJWTtoken(email);
-            System.out.println(token);
+            Token token = new Token();
+            token.setToken(getJWTtoken(email));
             return token;
         }else{
-            System.out.println("encontro nada");
             return null;
         }
     }
