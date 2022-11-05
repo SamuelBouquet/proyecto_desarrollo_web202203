@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
     login: '',
     password: '',
     passwordConfirm: '',
+    name: '',
   });
 
   ngOnInit(): void {
@@ -24,12 +25,14 @@ export class RegisterComponent implements OnInit {
   onSubmit():void{
     let user: string;
     let pass: string;
+    let name: string;
     let passConf: string;
     user=''+this.checkoutForm.value.login;
     pass=''+this.checkoutForm.value.password;
     passConf=''+this.checkoutForm.value.passwordConfirm;
+    name=''+this.checkoutForm.value.name;
     if (pass==passConf){
-      this.registerService.crearUser(user,pass).subscribe(
+      this.registerService.crearUser(user,pass,name).subscribe(
         data=>{console.log(data)}
       )
     }

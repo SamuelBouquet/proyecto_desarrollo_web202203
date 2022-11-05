@@ -15,6 +15,13 @@ public class Client {
     @Column(name = "activado")
     private Boolean activado;
 
+    public Client(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.activado = true;
+    }
+
     public Boolean getActivado() {
         return activado;
     }
@@ -44,6 +51,7 @@ public class Client {
     public String getName() {
         return name;
     }
+
     public void setName(String nombre) {
         this.name = nombre;
     }

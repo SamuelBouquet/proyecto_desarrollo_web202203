@@ -72,8 +72,6 @@ public class BookController {
 
     @GetMapping(path = "/{id}/Editorial")
     public Editorial getEditById(@PathVariable Integer id){
-        //System.out.println(id);
-        //Integer newId = Integer.getInteger(id);
         return bookService.getEditById(id);
     }
 

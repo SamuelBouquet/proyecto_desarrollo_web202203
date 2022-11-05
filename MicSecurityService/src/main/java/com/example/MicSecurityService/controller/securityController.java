@@ -22,7 +22,7 @@ public class securityController {
 
 
     @PostMapping("/login")
-    public Token login (@RequestParam("mail") String email, @RequestParam("password")String pwd){
+    public Token login (@RequestParam("mail") String email, @RequestParam("password") String pwd){
         Client client = service.findByEmail(email, pwd);
         if(client != null){
             Token token = new Token();

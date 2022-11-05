@@ -27,6 +27,12 @@ public class       ClientController {
         }
     }
 
+    @PostMapping("")
+    public void register(@RequestParam("mail") String email, @RequestParam("password") String pwd ,@RequestParam("name") String name){
+        System.out.println(email +" "+  pwd +" "+ name);
+        Client newClient = new Client(email,pwd,name);
+        service.saveUser(newClient);
+    }
 
     @DeleteMapping("/{email}")
     public ResponseEntity<?> delete(@PathVariable String email, @RequestBody String password){
