@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 import { RegisterService } from './register.service';
 
 @Component({
@@ -10,7 +12,8 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-              private registerService: RegisterService) { }
+              private registerService: RegisterService,
+              public router: Router) { }
 
   checkoutForm = this.formBuilder.group({
     login: '',
@@ -33,7 +36,9 @@ export class RegisterComponent implements OnInit {
     name=''+this.checkoutForm.value.name;
     if (pass==passConf){
       this.registerService.crearUser(user,pass,name).subscribe(
-        data=>{console.log(data)}
+        data=>{console.log(data),
+              alert("El perfil fue creado con éxito"),
+              this.router.navigateByUrl('/login')}
       )
     }
     else{

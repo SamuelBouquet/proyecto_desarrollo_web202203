@@ -25,7 +25,7 @@ public class MicSerivceBookApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizarionFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST,).permitAll()
+					.antMatchers(HttpMethod.GET).permitAll()
 					.anyRequest().authenticated();
 		}
 

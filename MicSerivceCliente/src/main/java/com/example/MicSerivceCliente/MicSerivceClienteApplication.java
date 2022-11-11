@@ -28,7 +28,7 @@ public class MicSerivceClienteApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizarionFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST,"/Client").permitAll()
+					.antMatchers(HttpMethod.POST).permitAll()
 					.anyRequest().authenticated();
 		}
 

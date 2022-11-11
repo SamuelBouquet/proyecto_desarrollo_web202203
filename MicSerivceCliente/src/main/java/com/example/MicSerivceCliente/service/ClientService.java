@@ -25,7 +25,7 @@ public class ClientService {
     public Boolean auth(String password, String email){
         try{
             Client aux = repository.findByEmail(email);
-            if(codify(aux.getPassword()).equals(codify(password))){return true;}
+            if(aux.getPassword().equals(password)){return true;}
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -37,7 +37,7 @@ public class ClientService {
     public boolean saveUser(Client u) {
         try{
             if(repository.findByEmail(u.getEmail())==null) {
-                u.setPassword(codify(u.getPassword()));
+                u.setPassword(u.getPassword());
                 repository.save(u);
                 return true;
             }
@@ -50,7 +50,7 @@ public class ClientService {
     public boolean deleteUser(String email, String password){
         Client client = repository.findByEmail(email);
         try {
-            if(client.getPassword().equals(codify(password))) {
+            if(client.getPassword().equals(password)) {
                 client.setActivado(false);
                 return true;
             }
@@ -58,20 +58,6 @@ public class ClientService {
             System.out.println(e.getMessage());
         }
         return false;
-    }
-
-
-    public String codify(String text) throws Exception{
-        MessageDigest m = MessageDigest.getInstance("MD5");
-        m.reset();
-        m.update(text.getBytes());
-        byte[] codify = m.digest();
-        BigInteger bigInt = new BigInteger(1,codify);
-        String hashtext = bigInt.toString(16);
-        while(hashtext.length() < 32 ){
-            hashtext = "0"+hashtext;
-        }
-        return hashtext;
     }
 
     public List<Client> getAllClients() {

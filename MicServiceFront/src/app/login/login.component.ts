@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service'
-//import sha256 from 'fast-sha256';
-//import { decodeUTF8, encodeUTF8 } from 'tweetnacl-util';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +26,8 @@ export class LoginComponent implements OnInit {
 
       let userParam: string;
       let passParam: string;
-      //let passSha256: string;
       userParam = ''+this.checkoutForm.value.login;
       passParam = ''+this.checkoutForm.value.password;
-      //passSha256 = encodeUTF8(sha256(decodeUTF8(passParam)));
-      //console.log(passSha256);
       console.log('FormValue:', this.checkoutForm.value);
       console.log('Login:', this.checkoutForm.value.login);
       console.log('Password:', this.checkoutForm.value.password);
