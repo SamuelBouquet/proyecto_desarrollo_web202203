@@ -4,6 +4,9 @@ import com.example.MicSerivceBook.domain.Book;
 import com.example.MicSerivceBook.domain.Editorial;
 import com.example.MicSerivceBook.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.ServerHttpResponse;
@@ -22,10 +25,26 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @CrossOrigin(origins="https://localhost:4200")
-    @GetMapping("")
-    public List<Book> list() {
-        return bookService.findAllBooks();
+//    @CrossOrigin(origins="https://localhost:4200")
+//    @GetMapping("")
+//    public List<Book> list() {
+//        return bookService.findAllBooks();
+//    }
+
+    //      ya se supone que funciona esto...
+    @CrossOrigin(origins = "https://localhost:4200")
+    @GetMapping()
+    public ResponseEntity<Page<Book>> paginacion(
+           @RequestParam("pag") Integer pagina,
+           @RequestParam(defaultValue = "id") String order,
+           @RequestParam(defaultValue = "true") boolean asc){
+
+        Page<Book> rturned = bookService.paginado(PageRequest.of(pagina,10, Sort.by(order)));
+        if(!asc){
+            rturned = bookService.paginado(PageRequest.of(pagina,10, Sort.by(order).descending()));
+        }
+        return new ResponseEntity<Page<Book>>(rturned,HttpStatus.OK);
+
     }
 
     @GetMapping("/{id}")
