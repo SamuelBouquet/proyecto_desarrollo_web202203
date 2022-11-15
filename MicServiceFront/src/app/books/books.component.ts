@@ -31,7 +31,7 @@ export class BooksComponent implements OnInit {
   }
 
   onSubmit(){
-    
+    //this.fillBooks();
     let filter: Editorial;
     let edi=this.editoriales.find(element=>element.name==this.filterForm.value.editorial);
     filter={"id":edi!.id, "name":edi!.name};

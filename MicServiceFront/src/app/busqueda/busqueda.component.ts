@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { BusquedaService } from './busqueda.service';
 import { Book } from '../books/books.component';
 import { Editorial } from '../editorial/editorial.component';
+import { BooksService } from '../books/books.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -15,24 +16,28 @@ export class BusquedaComponent implements OnInit {
     busqueda:''
   });
 
-  public result=<Book>{};
+  public result=<Book[]>[];
   public resEdi=<Editorial>{};
+  public allBooks=<Book[]>[];
+
+  searchTerm ='';
+  term='';
 
   constructor(private formBuilder: FormBuilder,
-              private busquedaService: BusquedaService) {}
+              private busquedaService: BusquedaService,
+              private bookService: BooksService) {}
 
   ngOnInit(): void {
+    this.bookService.getAllBooks().subscribe(
+      data=>{console.log(data);
+            this.allBooks = data});
   }
 
   buscar(): void {
     console.log('busqueda:',this.searchForm.value.busqueda)
     let busc: string;
-    let result: Book;
-    let resEdi: Editorial;
     busc = ''+this.searchForm.value.busqueda;
-    this.busquedaService.buscarLibro(busc).subscribe(
-      data=>{console.log(data);
-            this.result = data});
-  }
 
+    this.result=this.allBooks.filter(element=>element.name.includes(busc))
+  }
 }

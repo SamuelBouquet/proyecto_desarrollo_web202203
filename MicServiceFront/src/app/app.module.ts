@@ -15,6 +15,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { EditorialComponent } from './editorial/editorial.component';
 import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 import { EliminarLibroComponent } from './eliminar-libro/eliminar-libro.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EliminarLibroComponent } from './eliminar-libro/eliminar-libro.componen
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

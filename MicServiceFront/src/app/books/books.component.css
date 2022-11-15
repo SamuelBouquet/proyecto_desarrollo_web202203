@@ -1,12 +1,12 @@
 .card{
-    padding: 10px;
     min-height: 300px;
     max-height: 300px;
-    margin: 15px;
+    display:flex;
+    margin: 10px;
     border-color: black;
+    overflow-y: scroll;
 }
 
 .custom-form{
     margin: 5px
 }
-

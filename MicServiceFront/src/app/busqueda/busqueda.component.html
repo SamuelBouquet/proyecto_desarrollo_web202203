@@ -9,14 +9,13 @@
         <br>
         <button type="submit" class="btn btn-primary">buscar</button>
     </form>
-    <div class="col-20">
-        <div class="card" *ngIf="result.name!=null">
-            <img class="card-img-top" src={{result.image_url}} alt="Foto">
-            <div class="card-body">
-                <h5 class="bookName">{{result.name}}</h5>
-                <p class="bookDescription">{{result.description}}</p>
-                <br>
-                <p class="bookEditorial">{{result.editorial.name}}</p>
+    <div class="col-4"  *ngFor="let book of result">
+        <div class="card">
+            <img class="card-img-top" src={{book.image_url}} alt="Foto">
+           <div class="card-body">
+                <h3 class="bookName">{{book.name}}</h3>
+                <h6 class="bookDescription">{{book.description}}</h6>
+                <p class="bookEdi">{{book.editorial.name}}</p>
             </div>
         </div>
     </div>
