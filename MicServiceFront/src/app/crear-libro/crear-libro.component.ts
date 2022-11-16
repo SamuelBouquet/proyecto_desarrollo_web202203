@@ -39,9 +39,11 @@ export class CrearLibroComponent implements OnInit {
     bookName=''+this.bookForm.value.name;
     bookDesc=''+this.bookForm.value.descripcion;
     let edi=this.editoriales.find(element=>element.name==this.bookForm.value.editorial);
+    console.log("aqui va edi" , this.bookForm.value.editorial," aqui termina")
     bookEdi={"id":edi!.id, "name":edi!.name};
+
     bookImg=''+this.bookForm.value.image_url;
-    console.log('editorial:',this.bookForm.value.editorial)
+    console.log('aquiii ',edi?.id)
     console.log(this.editoriales.find(element=>element.name==this.bookForm.value.editorial))
     console.log('name:',this.bookForm.value.name)
 

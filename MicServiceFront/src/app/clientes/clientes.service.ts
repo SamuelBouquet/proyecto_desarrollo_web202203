@@ -17,14 +17,9 @@ export class ClientesService {
       'Authorization' : this.loginService.getToken()
     })
     const body = JSON.stringify({})
-    return this.http.get<Cliente>("http://localhost:8082/Client", {headers: headers});
+    return this.http.get<Cliente>("http://localhost:8082/Client/all");
   }
 
-  borrarClientes(): Observable<any>{
-    const headers = new HttpHeaders({ 
-      'Authorization' : this.loginService.getToken()
-    })
-    const body = JSON.stringify({})
-    return this.http.get<Cliente>("http://localhost:8082/Client", {headers: headers});
-  }
+
+  
 }

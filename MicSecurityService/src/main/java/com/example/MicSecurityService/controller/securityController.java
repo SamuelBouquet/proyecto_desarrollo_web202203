@@ -27,6 +27,7 @@ public class securityController {
         if(client != null){
             Token token = new Token();
             token.setToken(getJWTtoken(email));
+            System.out.println(token.getToken());
             return token;
         }else{
             return null;
@@ -34,7 +35,7 @@ public class securityController {
     }
 
     private String getJWTtoken(String email) {
-        String key = "lo que sea";
+        String key = "key";
         List<GrantedAuthority> grantedAthorities = AuthorityUtils
                 .commaSeparatedStringToAuthorityList("ROLE_USER");
 
@@ -47,7 +48,7 @@ public class securityController {
                                 .map(GrantedAuthority::getAuthority)
                                 .collect(Collectors.toList()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 10000))
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
                 .signWith(SignatureAlgorithm.HS512,
                         key.getBytes()).compact();
         return "Bearer " + token;

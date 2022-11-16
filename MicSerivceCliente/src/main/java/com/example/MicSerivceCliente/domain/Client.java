@@ -21,6 +21,9 @@ public class Client {
         this.name = name;
         this.activado = true;
     }
+    public Client(){
+
+    }
 
     public Boolean getActivado() {
         return activado;

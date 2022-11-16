@@ -4,6 +4,7 @@ package com.example.MicSerivceCliente.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -20,7 +21,7 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private final String HEADER = "Authorization";
     private final String PREFIX = "Bearer ";
-    private final String SECRET = "lo que sea";
+    private final String SECRET = "key";
 
 
     @Override
@@ -45,7 +46,9 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
     }
 
     private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
+
         String authenticationHeader = request.getHeader(HEADER);
+        System.out.println(authenticationHeader);
         if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX)){
             return false;
         }

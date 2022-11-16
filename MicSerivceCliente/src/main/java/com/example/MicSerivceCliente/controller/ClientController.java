@@ -16,6 +16,12 @@ public class       ClientController {
     @Autowired
     ClientService service;
 
+    @CrossOrigin("https://localhost:4200")
+    @GetMapping("/all")
+    public List<Client> getAll(){
+
+        return service.getAllClients();
+    }
 
     @GetMapping("/{email}")
     public ResponseEntity<Client> getUser(@PathVariable String email){

@@ -53,6 +53,6 @@ export interface Book{
   id: string;
   name: string;
   description: string;
-  image_url: string;
+  imageUrl: string;
   editorial: Editorial;
 }

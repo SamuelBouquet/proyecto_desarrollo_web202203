@@ -9,12 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
-import java.sql.SQLDataException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -58,10 +54,11 @@ public class BookController {
     }
 
     @PostMapping("")
-    @CrossOrigin(origins="https://localhost:4200")
+//    @CrossOrigin(origins="https://localhost:4200")
     public void post(@RequestBody Book book) {
+        System.out.println(book.getName());
         bookService.saveBook(book);
-        //System.out.println(book.getName());
+
     }
 
     @PutMapping("/{id}")

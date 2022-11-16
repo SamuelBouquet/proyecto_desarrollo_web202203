@@ -32,7 +32,7 @@ export class EliminarLibroComponent implements OnInit {
   onSubmit(){
     let book: Book;
     let bk=this.books.find(element=>element.name==this.eliminarForm.value.book);
-    book={"id":bk!.id, "name":bk!.name, "description":bk!.description, "image_url":bk!.image_url, "editorial":bk!.editorial};
+    book={"id":bk!.id, "name":bk!.name, "description":bk!.description, "imageUrl":bk!.imageUrl, "editorial":bk!.editorial};
     console.log("sdftsdfasdf"+book.id)
     if(confirm("¿Desea eliminar "+bk!.name+"?")) {
       this.eliminarLibroService.eliminarLibro(book).subscribe(data=>{console.log(data)})

@@ -25,9 +25,9 @@ export class ClientesComponent implements OnInit {
 }
 
 export interface Cliente{
-  id: number;
+  id: String;
   email: string;
   password: string;
   name: string;
-  activado: boolean;
+  activado: string;
 }

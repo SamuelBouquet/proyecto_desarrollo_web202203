@@ -10,3 +10,7 @@
 .custom-form{
     margin: 5px
 }
+
+.card-image-top{
+    max-height: 50px;
+}

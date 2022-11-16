@@ -19,7 +19,7 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private final String HEADER = "Authorization";
     private final String PREFIX = "Bearer ";
-    private final String SECRET = "lo que sea";
+    private final String SECRET = "key";
 
 
     @Override
@@ -45,9 +45,13 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
         String authenticationHeader = request.getHeader(HEADER);
+//        System.out.println(authenticationHeader);
+//        authenticationHeader +=PREFIX
         if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX)){
+            System.out.println("entro");
             return false;
         }
+        System.out.println("no entro");
         return true;
     }
 
@@ -65,6 +69,7 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private Claims validateToken(HttpServletRequest request) {
         String jwtToken = request.getHeader(HEADER).replace(PREFIX,"");
+        System.out.println(jwtToken);
         return Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();
     }
 
