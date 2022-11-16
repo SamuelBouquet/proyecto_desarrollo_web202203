@@ -23,9 +23,11 @@ export class LoginService {
         .set('mail', user)
         .set('password', password)
       console.log(password)
-      return this.http.post("http://localhost:8080/login", body, {
+      const result = this.http.post("http://localhost:8080/login", body, {
                             params: params
                             });
+      console.log(result , "aquiiii");
+      return result
   }
 
   setToken(token: string) {

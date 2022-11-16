@@ -16,6 +16,7 @@ import { EditorialComponent } from './editorial/editorial.component';
 import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 import { EliminarLibroComponent } from './eliminar-libro/eliminar-libro.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ClientesComponent } from './clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BusquedaComponent,
     EditorialComponent,
     CrearLibroComponent,
-    EliminarLibroComponent
+    EliminarLibroComponent,
+    ClientesComponent
   ],
   imports: [
     BrowserModule,

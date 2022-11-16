@@ -40,4 +40,6 @@ export class BusquedaComponent implements OnInit {
 
     this.result=this.allBooks.filter(element=>element.name.includes(busc))
   }
+
+  
 }

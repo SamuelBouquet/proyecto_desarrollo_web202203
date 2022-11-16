@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                                     console.log(data.token);
                                     this.loginService.setToken(data.token);
                                     this.router.navigateByUrl('/');
-                                  });
+                                  });                                  
       this.checkoutForm.reset();
   }
 

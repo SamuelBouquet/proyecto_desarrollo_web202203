@@ -25,19 +25,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-//    @CrossOrigin(origins="https://localhost:4200")
-//    @GetMapping("")
-//    public List<Book> list() {
-//        return bookService.findAllBooks();
-//    }
+    @CrossOrigin(origins="https://localhost:4200")
+    @GetMapping("")
+    public List<Book> list() {
+        return bookService.findAllBooks();
+    }
 
     //      ya se supone que funciona esto...
     @CrossOrigin(origins = "https://localhost:4200")
-    @GetMapping()
+    @GetMapping("/paginados")
     public ResponseEntity<Page<Book>> paginacion(
-           @RequestParam("pag") Integer pagina,
-           @RequestParam(defaultValue = "id") String order,
-           @RequestParam(defaultValue = "true") boolean asc){
+           @RequestParam(name = "pag") Integer pagina,
+           @RequestParam(defaultValue = "id",name="order") String order,
+           @RequestParam(defaultValue = "true", name="asc") boolean asc){
 
         Page<Book> rturned = bookService.paginado(PageRequest.of(pagina,10, Sort.by(order)));
         if(!asc){
