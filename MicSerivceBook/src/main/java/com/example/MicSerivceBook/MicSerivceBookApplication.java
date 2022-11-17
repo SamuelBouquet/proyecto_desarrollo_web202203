@@ -26,8 +26,8 @@ public class MicSerivceBookApplication {
 					.addFilterAfter(new JWTAuthorizarionFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
 					.antMatchers(HttpMethod.GET).permitAll()
-					.antMatchers(HttpMethod.POST).permitAll()
-//					.antMatchers(HttpMethod.POSTo").authenticated()
+//					.antMatchers(HttpMethod.POST).permitAll()
+					.antMatchers(HttpMethod.DELETE).permitAll()
 					.anyRequest().authenticated();
 		}
 

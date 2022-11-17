@@ -61,7 +61,9 @@ public class BookController {
 
     }
 
-    @PutMapping("/{id}")
+
+    @PutMapping("{id}")
+
     public ResponseEntity<?> put(@PathVariable Integer id,@RequestBody Book book) {
         try{
             Book newBook = bookService.getBook(id);

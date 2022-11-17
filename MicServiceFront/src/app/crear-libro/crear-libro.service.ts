@@ -26,7 +26,7 @@ export class CrearLibroService {
     //   return this.http.post("http://localhost:8081/Libro", body, {headers: {'Authorization':this.loginService.getToken()}})
     // alert("inicie sesion")
     
-    return this.http.post("http://localhost:8081/Libro", body)
+    return this.http.post("http://localhost:8081/Libro", body, {headers: headers, responseType:'text'})
   }
 
 }
