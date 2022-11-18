@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * @author Pablo Bright
+ * @author Samuel Lopez
+ */
 public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private final String HEADER = "Authorization";
@@ -24,6 +29,15 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
     private final String SECRET = "key";
 
 
+    /**
+     * @param request
+     * @param response
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
+     *
+     *
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try{
@@ -45,6 +59,12 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
         }
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
 
         String authenticationHeader = request.getHeader(HEADER);
@@ -55,6 +75,10 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
         return true;
     }
 
+    /**
+     *
+     * @param claims
+     */
     private void setUpSpringAuthentication(Claims claims) {
         @SuppressWarnings("unchecked")
         List<String> authorities = (List) claims.get("authorities");

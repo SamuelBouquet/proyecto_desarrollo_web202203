@@ -14,6 +14,20 @@ module.exports = function (config) {
     ],
     client: {
       jasmine: {
+        check: {
+          global:{
+            statements: 75,
+            branches: 75,
+            functions: 75,
+            lines:75
+          }
+        },
+        watermarks:{
+          statements:[50,75],
+          functions:[50,75],
+          branches:[50,75],
+          lines:[50,75]
+        }
         // you can add configuration options for Jasmine here
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
         // for example, you can disable the random execution with `random: false`

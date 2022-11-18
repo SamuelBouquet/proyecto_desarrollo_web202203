@@ -2,8 +2,15 @@ package com.example.MicSerivceCliente.domain;
 
 import javax.persistence.*;
 
+
+/**
+ * entindad encargada de la instanciacion de los clientes
+ * @author Pablo Bright
+ * @author Samuel Lopez
+ */
 @Entity
 public class Client {
+
 
     private Integer id;
     @Column(name = "email")
@@ -15,6 +22,11 @@ public class Client {
     @Column(name = "activado")
     private Boolean activado;
 
+    /**
+     * @param email email del cliente a crear
+     * @param password contraseña del cliente a crear
+     * @param name nombre del cliente a crear
+     */
     public Client(String email, String password, String name) {
         this.email = email;
         this.password = password;

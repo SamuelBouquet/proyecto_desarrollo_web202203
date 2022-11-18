@@ -83,6 +83,7 @@
           }
         },
         "test": {
+          "codeCoverage":true,
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",

@@ -11,6 +11,10 @@ import java.security.MessageDigest;
 import java.util.List;
 
 
+/**
+ * @author Pablo Bright
+ * @author Samuel Lopez
+ */
 @Service
 @Transactional
 public class ClientService {
@@ -18,22 +22,26 @@ public class ClientService {
     @Autowired
     ClientRepository repository;
 
+    /**
+     * encintrar cliente por un id dado
+     * @param id de cliente a buscar
+     * @return instancia del cliente encontrado
+     */
     public Client getUserById(Integer id){ return repository.findById(id).get();}
 
+    /**
+     * instancia de un cliente dado un email si existe, de lo contrario retorna null
+     * encontrar cliente dado un email
+     * @param email emial de un de cliente
+     * @return instancia de cliente o null
+     */
     public Client getUserByEmail(String email){return repository.findByEmail(email);}
 
-    public Boolean auth(String password, String email){
-        try{
-            Client aux = repository.findByEmail(email);
-            if(aux.getPassword().equals(password)){return true;}
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        finally {
-            return false;
-        }
-    }
-
+    /**
+     * metodo para guardar una nueva instancia de cliente dado un cliente pasado por parametro
+     * @param u instancia de cliente nueva a guardar
+     * @return booelano siendo true si se pudo efectuar el guardado y false si hubo un error al hacerlo
+     */
     public boolean saveUser(Client u) {
         try{
             if(repository.findByEmail(u.getEmail())==null) {
@@ -47,6 +55,13 @@ public class ClientService {
         return false;
     }
 
+    /**
+     * borrar una instancia de cliente de la base de datos
+     * @param email email del cliente a borrar
+     * @param password contraseña del cliente a borrar
+     * @return booleano que indica si se realizo el borrado exitosamente, siendo true para el caso positivo y false para el contrario
+     *
+     */
     public boolean deleteUser(String email, String password){
         Client client = repository.findByEmail(email);
         try {
@@ -60,6 +75,10 @@ public class ClientService {
         return false;
     }
 
+    /**
+     * busca todos los clientes activos dentro de la base de datos
+     * @return lista de clientes
+     */
     public List<Client> getAllClients() {
         return repository.findAllActive();
     }

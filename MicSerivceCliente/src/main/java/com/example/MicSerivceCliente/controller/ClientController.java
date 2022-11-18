@@ -10,12 +10,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+/**
+ * clase encargada de la la la recepecion de mensajes referentes a los cliente mediante metodos http
+ *
+ * metodos HTTP soportados
+ *      -GET
+ *      -POST
+ *      -PUT
+ *      -DELETE
+ * ruta de servicio: localhost:8082/Client
+ * @author Pablo Bright
+ * @author Samuel Lopez
+ */
 @RestController
 @RequestMapping(path = "/Client")
-public class       ClientController {
+public class  ClientController {
     @Autowired
     ClientService service;
 
+
+    /**
+     * Recuperar la lista de clientes activos total de la base de datos
+     * @return Lista de clientes mediante metodo http GET
+     */
     @CrossOrigin("https://localhost:4200")
     @GetMapping("/all")
     public List<Client> getAll(){
@@ -23,6 +41,11 @@ public class       ClientController {
         return service.getAllClients();
     }
 
+    /**
+     * hallar instancia al al epertenezca el email
+     * @param email email del cliente
+     * @return instancia de cliente retornado
+     */
     @GetMapping("/{email}")
     public ResponseEntity<Client> getUser(@PathVariable String email){
         try {
@@ -33,6 +56,12 @@ public class       ClientController {
         }
     }
 
+    /**
+     *registrar un nuevo cliente con un email, pwd y nombre respectivamente
+     * @param email email del nuevo cliente
+     * @param pwd contraseña del nuevo cliente
+     * @param name nombre del nuevo cliente
+     */
     @PostMapping("")
     public void register(@RequestParam("mail") String email, @RequestParam("password") String pwd ,@RequestParam("name") String name){
         System.out.println(email +" "+  pwd +" "+ name);
@@ -40,6 +69,12 @@ public class       ClientController {
         service.saveUser(newClient);
     }
 
+    /**
+     *se desactiva un cliente dado un email y una contraseña
+     * @param email email del cliente
+     * @param password contraseña del cliente
+     * @return mensaje de verificacion de la operacion (ACCPETED or UNAUTHORIZED)
+     */
     @DeleteMapping("/{email}")
     public ResponseEntity<?> delete(@PathVariable String email, @RequestBody String password){
         if(service.deleteUser(email,password))
@@ -48,6 +83,11 @@ public class       ClientController {
             return new ResponseEntity<>("La contraseña ingresada\nes incorrecta",HttpStatus.UNAUTHORIZED);
     }
 
+    /**
+     * actualizar el cliente al que le pertenezca el email, usando los datos de la instancia aux
+     * @param email emial del cliente
+     * @param aux instancia de cliente actualizada
+     */
     @PutMapping("/{email}")
     public void put(@PathVariable String email, @RequestBody Client aux) {
         Client newClient = service.getUserByEmail(email);
