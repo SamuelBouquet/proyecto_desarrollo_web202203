@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * clase encarga de la validacion del jwt en el back-End mediante el paso del header desde el fron-End
+ * @author Pablo Bright
+ * @author Samuel Suarez
+ */
 public class JWTAuthorizarionFilter extends OncePerRequestFilter {
 
     private final String HEADER = "Authorization";
@@ -43,6 +48,12 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
         }
     }
 
+    /**
+     * Verificar la sintaxis del token junto con el prefix
+     * @param request header de la peticion donde viene el token
+     * @param response
+     * @return booleano que confirma la validez del token, siendo true valid y false siendo un token incorrecto
+     */
     private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse response) {
         String authenticationHeader = request.getHeader(HEADER);
         if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX)){
@@ -63,6 +74,12 @@ public class JWTAuthorizarionFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
+
+    /**
+     * modificacion del token dentro del metodo para poder hacer la facil verificacion entre el token entrante y la llave de usuario que se genero al momento del logueo
+     * @param request header de la peticion que trae consigo el token
+     * @return instancia tipo claims que trae consigo el token modificado sin el prefix
+     */
     private Claims validateToken(HttpServletRequest request) {
         String jwtToken = request.getHeader(HEADER).replace(PREFIX,"");
         return Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();

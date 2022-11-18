@@ -2,6 +2,11 @@ package com.example.MicSecurityService.domain;
 
 import javax.persistence.*;
 
+/**
+ * Abstaccion del objeto cliente con instancias en la tabla client de la base de datos
+ * @author Pablo Bright
+ * @author Samuel Lopez
+ */
 @Entity
 public class Client {
     private Integer id;

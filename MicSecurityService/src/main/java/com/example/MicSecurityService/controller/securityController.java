@@ -20,7 +20,12 @@ public class securityController {
     @Autowired
     public clientService service;
 
-
+    /**
+     * Metodo encargado del logueo del cliente generando un token unico y retornandolo al front
+     * @param email email asociado a la instancia de tipo client
+     * @param pwd contraseña asociada a la instancia de tipo client
+     * @return instancia tipo token
+     */
     @PostMapping("/login")
     public Token login (@RequestParam("mail") String email, @RequestParam("password") String pwd){
         Client client = service.findByEmail(email, pwd);
@@ -34,6 +39,11 @@ public class securityController {
         }
     }
 
+    /**
+     * generar  nueva instancia de tipo token con token hasheado con un algoritmos HS512
+     * @param email email asociado a la instancia de tipo client
+     * @return cadena de texto que sera el token unico para la sesion del usuario
+     */
     private String getJWTtoken(String email) {
         String key = "key";
         List<GrantedAuthority> grantedAthorities = AuthorityUtils
