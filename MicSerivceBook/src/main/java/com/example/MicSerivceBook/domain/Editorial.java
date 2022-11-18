@@ -2,6 +2,11 @@ package com.example.MicSerivceBook.domain;
 
 import javax.persistence.*;
 
+/**
+ * Abstraccion de un objeto tipo editorial con intancias en la base de datos
+ *  @author Pablo Bright
+ *  @author Samuel Lopez
+ */
 @Entity
 public class Editorial {
 
